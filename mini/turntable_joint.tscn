@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 1.0177, 1.00331, 1.0353 )
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="SphereMesh" id=3]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="SpatialMaterial" id=4]
+
+[sub_resource type="SphereShape" id=5]
+radius = 0.4
+
+[node name="Spatial3" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.108776, 2.5191, 0.983203 )
+
+[node name="KinematicBody" type="Spatial" parent="."]
+
+[node name="RB_A2" type="RigidBody" parent="KinematicBody"]
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody/RB_A2"]
+shape = SubResource( 6 )
+
+[node name="A" type="MeshInstance" parent="KinematicBody/RB_A2"]
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="RB_A3" type="RigidBody" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00525141, 2.81353 )
+mass = 10.0
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody/RB_A3"]
+shape = SubResource( 6 )
+
+[node name="A" type="MeshInstance" parent="KinematicBody/RB_A3"]
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="PinJoint" type="Generic6DOFJoint" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0890167, 1.39274 )
+nodes/node_a = NodePath("../RB_A2")
+nodes/node_b = NodePath("../RB_A3")
+angular_motor_y/target_velocity = 1.0
+angular_limit_z/enabled = false
+angular_motor_z/enabled = true
+angular_motor_z/target_velocity = 1.0
+
+[node name="RigidBody" type="RigidBody" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.96046e-08, 1.3993 )
+
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody/RigidBody"]
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="KinematicBody/RigidBody"]
+shape = SubResource( 5 )

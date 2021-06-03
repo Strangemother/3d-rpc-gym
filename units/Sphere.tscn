@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends RigidBody
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+export var color:Color = Color('#880000')
+export var mesh_node:NodePath = NodePath('A')
+export var physics:bool = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_color()
+	get_node(\"CollisionShape\").disabled = physics == false
+
+func set_color():
+	var mesh:MeshInstance = get_node('./A')
+	var mat:Material = mesh.get_surface_material(0)#.set_shader_param(\"albedo\", color)
+	mat.albedo_color = color
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="SphereShape" id=2]
+
+[sub_resource type="SphereMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+resource_local_to_scene = true
+
+[node name="Sphere" type="RigidBody"]
+can_sleep = false
+script = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="A" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )

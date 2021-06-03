@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.0177, 1.00331, 1.0353 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="Actor" type="Spatial"]
+transform = Transform( 0.984877, 0.173253, 0, -0.173253, 0.984877, 0, 0, 0, 1, -2.85572, 2, 0 )
+
+[node name="HingeJoint" type="HingeJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17759, 0.994455, 0 )
+nodes/node_a = NodePath("../RB_A")
+nodes/node_b = NodePath("../RB_B")
+collision/exclude_nodes = false
+motor/target_velocity = 0.0
+
+[node name="RB_A" type="RigidBody" parent="."]
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="RB_A"]
+shape = SubResource( 1 )
+
+[node name="A" type="MeshInstance" parent="RB_A"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="RB_B" type="RigidBody" parent="."]
+transform = Transform( 0.951546, 0.307506, 0, -0.307506, 0.951546, 0, 0, 0, 1, 0.397832, 2.32187, -0.0727081 )
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="RB_B"]
+shape = SubResource( 1 )
+
+[node name="A" type="MeshInstance" parent="RB_B"]
+mesh = SubResource( 2 )
+material/0 = null

@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.0177, 1.00331, 1.0353 )
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="Spatial" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10955, 3.36125, 0 )
+
+[node name="RB_A2" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="RB_A2"]
+shape = SubResource( 1 )
+
+[node name="A" type="MeshInstance" parent="RB_A2"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="RB_A3" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2301, 0 )
+can_sleep = false
+
+[node name="CollisionShape" type="CollisionShape" parent="RB_A3"]
+shape = SubResource( 1 )
+
+[node name="A" type="MeshInstance" parent="RB_A3"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="PinJoint" type="PinJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12691, 0 )
+nodes/node_a = NodePath("../RB_A2")
+nodes/node_b = NodePath("../RB_A3")
+collision/exclude_nodes = false
