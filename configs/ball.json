@@ -1,0 +1,15 @@
+ {
+    "name": "Example2",
+    "position": [-1, 12, 1],
+    "nodes": [
+        {
+            "name": "ball",
+            "type": "sphere",
+            "position": [1, 0, 0],
+            "color": "#ff0000",
+            "bounce": 0,
+            "mass": 0,
+            "axis_lock_linear_y": false
+        }
+    ]
+}

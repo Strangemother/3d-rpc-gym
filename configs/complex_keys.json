@@ -1,0 +1,7 @@
+{
+    "color": "apply_color",
+    "position": "apply_position",
+    "rotation": "apply_vector",
+    "rotation_degrees": "apply_vector",
+    "scale": "apply_vector"
+}

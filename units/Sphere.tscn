@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="PhysicsMaterial" id=10]
+resource_local_to_scene = true
+
+[sub_resource type="GDScript" id=9]
 script/source = "extends RigidBody
 
 
@@ -12,10 +15,23 @@ export var color:Color = Color('#880000')
 export var mesh_node:NodePath = NodePath('A')
 export var physics:bool = true
 
+var store_scale = Vector3(1.0,1.0,1.0)
+export(Vector3) var size = Vector3(1.0,1.0,1.0) setget my_var_set, my_var_get
+
+func my_var_set(n):
+	var v = Vector3(n[0], n[1], n[2])
+	get_node(\"CollisionShape\").scale = v
+	get_node(\"A\").scale = v
+	store_scale = n
+	
+func my_var_get():
+	return store_scale
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_color()
 	get_node(\"CollisionShape\").disabled = physics == false
+
 
 func set_color():
 	var mesh:MeshInstance = get_node('./A')
@@ -27,20 +43,21 @@ func set_color():
 #	pass
 "
 
-[sub_resource type="SphereShape" id=2]
+[sub_resource type="SphereShape" id=6]
 
-[sub_resource type="SphereMesh" id=3]
+[sub_resource type="SphereMesh" id=7]
 
 [sub_resource type="SpatialMaterial" id=4]
 resource_local_to_scene = true
 
 [node name="Sphere" type="RigidBody"]
+physics_material_override = SubResource( 10 )
 can_sleep = false
-script = SubResource( 1 )
+script = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 
 [node name="A" type="MeshInstance" parent="."]
-mesh = SubResource( 3 )
+mesh = SubResource( 7 )
 material/0 = SubResource( 4 )

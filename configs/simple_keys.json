@@ -1,0 +1,14 @@
+{
+    "mass": 10,
+    "bounce": null,
+    "gravity_scale": 1,
+    "physics": null,
+    "name": null,
+    "visible": true,
+    "axis_lock_angular_x": null,
+    "axis_lock_angular_y": null,
+    "axis_lock_angular_z": null,
+    "axis_lock_linear_x": null,
+    "axis_lock_linear_y": null,
+    "axis_lock_linear_z": null
+}

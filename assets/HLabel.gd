@@ -15,10 +15,10 @@ func play_flash():
 		$AnimationPlayer.stop(true)
 		$AnimationPlayer.play("Flash")
 	
-func render(value, label=null) -> void:
-	if label == null:
-		label = self.label
-	$Label.text = label 
+func render(value, _label=null) -> void:
+	if _label == null:
+		_label = self.label
+	$Label.text = _label 
 	set_value(value)
 	
 	play_flash()

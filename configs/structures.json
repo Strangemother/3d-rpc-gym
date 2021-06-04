@@ -1,0 +1,6 @@
+{
+    "cube": "res://units/Cube.tscn",
+    "egg": "res://units/Egg.tscn",
+    "sphere": "res://units/Sphere.tscn",
+    "pyramid": "res://units/Pyramid.tscn"
+}

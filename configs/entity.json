@@ -1,0 +1,23 @@
+ {
+    "name": "Example",
+    "position": [1, 8, 1],
+    "version": 1.0,
+    "rotation": [0,0, 0.15],
+    "nodes": [{
+            "type": "cube",
+            "position": [0, 0, 0],
+            "size": [0.25, 2, 0.25],
+            "color": "#00ff00",
+            "physics": true,
+            "mass": 10,
+            "gravity_scale": 1,
+            "nodes": [{
+                "type": "sphere",
+                "position": [1, 1, 1],
+                "color": "#ff0000",
+                "physics": false,
+                "size": [2,1,2]
+            }]
+        }
+    ]
+}

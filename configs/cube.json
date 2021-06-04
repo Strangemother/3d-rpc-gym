@@ -1,0 +1,11 @@
+{
+    "name": "Example2",
+    "position": [1, 11, -1],
+    "nodes": [
+        {
+            "type": "cube",
+            "position": [0, 0, 0],
+            "color": "#ff2200"
+        }
+    ]
+}
